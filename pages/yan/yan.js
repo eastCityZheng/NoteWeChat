@@ -1,4 +1,7 @@
 // pages/yan/yan.js
+var app=getApp();
+var Periphery_url = app.appServlet.servlet + "PeripheryServlet";
+
 Page({
 
     /**
@@ -114,7 +117,27 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+      wx.getLocation({
+        success: function (res) {
+          var latitude = res.latitude
+          var longitude = res.longitude
+          wx.request({
+            url: Periphery_url,
+            data:{
+              lat:latitude,
+              lon:longitude,
+              u_id: app.appuserinfo.u_id
+            },
+            header:{'Content-Type':'json'},
+            method:'GET',
+            success:function(res){
+              console.log(res);
+            }
+          })
 
+
+        }
+      })
     },
 
     /**
