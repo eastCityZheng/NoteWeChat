@@ -1,0 +1,53 @@
+<!--pages/BuildNote/BuildNote.wxml-->
+<view class='body'>
+  <view class='bar'>
+      <view class='bar_left'>新建的便签</view>
+      <view class='bar_right' bindtap='changetoXX'>
+        <image src='../../images/right.png'></image>
+      </view>
+  </view>
+
+  <view class='first_white'>
+     <textarea maxlength='1000' hidden='{{textareashow}}' style='margin-top:10rpx; color:#282828;' bindinput='textachange' value='{{texta}}'></textarea>
+      <view class='pictures' style='margin-top: {{imgtop}}rpx;' wx:if='{{files[0]}}'>
+         <view class="weui-uploader__bd" >
+            <view class="weui-uploader__files" id="uploaderFiles" >
+                <block wx:for="{{files}}"  wx:key="*this">
+                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}" style='float:left'>
+                    <view data-index='{{index}}' catchtap="deleteImg">
+                         <image src='../../images/delete_img.png' class='delete'></image>
+                    </view>
+                         <image class="weui-uploader__img" style='width:127rpx; height:127rpx;margin-left: 15rpx;' src="{{item}}" mode="aspectFill" />
+                     </view>
+                </block>
+            </view>
+            <view class="weui-uploader__input-box" >
+                <view class="weui-uploader__input" bindtap="chooseImage" >
+                <image src='../../images/add.png' class='jiaimage'></image>
+                </view>
+            </view>
+        </view>
+    </view>
+          <view class='pictures2' wx:if='{{n_note.n_video}}' style='margin-top: {{imgtop}}rpx;'>
+        <video id='myVideo'  class='video' src="{{audiourl+n_note.n_video}}" objectFit="cover" controls  bindplay='quanp'bindfullscreenchange='exitfull'></video>
+      </view>
+       <view class='pictures3' wx:if='{{n_note.n_audio}}' style='margin-top: {{imgtop}}rpx;'>
+      <audio  poster="{{poster}}" name="{{name2}}" author="{{author}}" src="{{audiourl+n_note.n_audio}}" id="myAudio" bindtouchend='startandpause' controls loop >
+        </audio>
+    </view>
+  </view>
+
+  <view class='select_color'>
+    <view class='select_left'>选择颜色</view>
+    <view class='select_right'>
+      <view class="{{colortype==0?'circle.s1':'circle'}}" bindtap='s1'style=' border: 1rpx solid #ff6666;'></view>
+      <view class="{{colortype==1?'circle.s2':'circle'}}" bindtap='s2' style=' border: 1rpx solid #498eff;'></view>
+      <view class="{{colortype==2?'circle.s3':'circle'}}" bindtap='s3' style=' border: 1rpx solid #c68efe;'></view>
+      <view class="{{colortype==3?'circle.s4':'circle'}}" bindtap='s4' style=' border: 1rpx solid #ffc949;'></view>
+      <view class="{{colortype==4?'circle.s5':'circle'}}" bindtap='s5' style=' border: 1rpx solid #feb0fe;'></view>
+      <view class="{{colortype==5?'circle.s6':'circle'}}" bindtap='s6' style=' border: 1rpx solid #ffa94d;'></view>
+    </view>
+  </view>
+</view>
+
+

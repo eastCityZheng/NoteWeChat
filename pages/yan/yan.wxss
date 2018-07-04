@@ -1,0 +1,124 @@
+/* pages/yan/yan.wxss */
+
+.barimg {
+    width: 750rpx;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    height: 140rpx;
+    /* border: 1rpx solid red; */
+}
+
+.text {
+    z-index: 5;
+    float: left;
+}
+
+.left {
+    padding-top: 50rpx;
+    text-align: center;
+    height: 110rpx;
+    width: 50%;
+    float: left;
+    /* border: 1rpx solid red;  */
+}
+
+.right {
+    padding-top: 50rpx;
+    text-align: center;
+    float: left;
+    height: 110rpx;
+    width: 47%;
+    /* border: 1rpx solid red; */
+}
+
+.body_text {
+    position: relative;
+}
+
+.text1 {
+    background-color: #fbfbfb;
+    width: 100%;
+    position: absolute;
+    /* border: 1rpx solid red; */
+}
+
+.text2 {
+    background-color: #fbfbfb;
+    width: 100%;
+    position: absolute;
+    /* border: 1rpx solid blue; */
+}
+.view2 {
+    position: relative;
+}
+
+.view2_1 {
+    width: 695rpx;
+    height: 120rpx;
+    margin: 0 auto;
+    margin-top: 42rpx;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #eaeaea;
+    background-color: white;
+    display: flex;
+    position: relative;
+    z-index: 4;
+}
+.view2_1_1 {
+    width: 10rpx;
+    height: 120rpx;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.view2_1_2 {
+    margin-left: 39rpx;
+    width: 500rpx;
+    height: 120rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.view2_1_3 {
+    width: 144rpx;
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.hview2 {
+    position: relative;
+}
+.hview2_1_2 {
+    margin-left: 24rpx;
+    width: 500rpx;
+    display: flex;
+    flex-direction: column;
+}
+.hview2_1 {
+    width: 695rpx;
+    height: 150rpx;
+    margin: 0 auto;
+    margin-top: 42rpx;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #eaeaea;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 4;
+}
+
+.hview2_1_1 {
+    width: 10rpx;
+    height: 150rpx;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.hnew2_1{
+    margin-left: 24rpx;
+    display: flex;
+    margin-top: 25rpx;
+    height: 75rpx;
+}

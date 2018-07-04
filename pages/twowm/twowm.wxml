@@ -1,0 +1,8 @@
+<!--pages/twowm/twowm.wxml-->
+<view class='view'>
+
+    <canvas class='canvas1' canvas-id="firstCanvas" style='height:{{windowHeight/603*900}}rpx'>
+    </canvas>
+
+    <button class='button' bindtap='savetap'>保存二维码</button>
+</view>

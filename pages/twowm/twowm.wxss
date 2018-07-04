@@ -1,0 +1,27 @@
+/* pages/twowm/twowm.wxss */
+
+.view {
+    width: 750rpx;
+    height: 1204rpx;
+    background-color: #f8f8f8;
+    padding-top: 10rpx;
+    box-shadow: -2px 2px 10px #eaeaea inset;
+}
+
+.button{
+    box-shadow: 0px 0px 10px #498eff;
+    color: white;
+    background-color: #77a9fb;
+    margin-top: 92rpx;
+    height: 70rpx;
+    width: 360rpx;
+    display: table;
+}
+.button text {
+  vertical-align:middle;
+  display: table-cell;
+}
+
+.canvas1{
+  width: 100%;
+}

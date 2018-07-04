@@ -1,0 +1,45 @@
+<!--pages/yan/yan.wxml-->
+<view class='bar'>
+    <view class='barimg' style='  background-image: url({{cimg[imgtype]}})'>
+        <view class='left' style="color: {{imgtype==0?'white':'#2c9af5'}}" bindtap='changeimg'>身边便签</view>
+        <view class='right' style="color: {{imgtype==0?'#2c9af5':'white'}}" bindtap='changeimg2'>好友留言</view>
+    </view>
+    <view class='body_text'>
+        <view class='text1' hidden='{{flag}}'>
+            <view>
+                <view class='view2' wx:for="{{program}}">
+                    <view class='view2_1' style="{{item.txtStyle}}" data-index="{{index}}">
+                        <view class='view2_1_1' style='background-color:{{colorx[item.color]}};'></view>
+                        <view class='view2_1_2'>
+                            <text style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.tatle}}">{{item.tatle}}</text>
+                            <text style='font-size:18rpx; margin-top: 14rpx; color:#a9a9a9;'>{{item.time}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='text2' hidden='{{flag2}}'>
+            <view >
+                <view class='hview2' wx:for="{{program2}}">
+                    <view class='hview2_1' style="{{item.txtStyle}}"  data-index="{{index}}">
+                        <view style='display:flex; flex-direction:column;'>
+                            <view class='hview2_1_2'>
+                                <text style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.tatle}}">{{item.tatle}}</text>
+                            </view>
+                            <view class='hnew2_1'>
+                                <view style='width:56rpx; height:56rpx; border-radius:100rpx;'>
+                                    <image src='{{item.txsrc}}' style='width:56rpx; height:56rpx; border-radius:100rpx;'></image>
+                                </view>
+                                <view style='display: flex;flex-direction: column; margin-left:19rpx;'>
+                                    <text style='font-size:18rpx; color:#a9a9a9;'>{{item.username}}</text>
+                                    <text style='font-size:18rpx; margin-top: 10rpx; color:#a9a9a9;'>{{item.time}}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class='hview2_1_1' style='background-color:{{colorx[item.color]}};'></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

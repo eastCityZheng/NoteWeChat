@@ -1,0 +1,93 @@
+/* pages/bq/bq.wxss */
+
+.view {
+    width: 750rpx;
+    background-color: #f8f8f8;
+}
+
+.view1 {
+    z-index: 10;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 750rpx;
+    height: 103rpx;
+    background-color: #2c99f4;
+    display: flex;
+    justify-content: space-between;
+}
+
+.view1_1 {
+    width: 300rpx;
+    height: 103rpx;
+    line-height: 103rpx;
+    margin-left: 27rpx;
+}
+
+.view1_2 {
+    width: 300rpx;
+    height: 103rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 44rpx;
+}
+
+.images2 {
+    width: 42rpx;
+    height: 42rpx;
+    float: right;
+}
+
+.images3 {
+    width: 42rpx;
+    height: 42rpx;
+    float: right;
+    margin-left: 38rpx;
+}
+
+.text {
+    color: white;
+    font-size: 30rpx;
+}
+
+.viewp {
+    display: flex;
+    justify-content: center;
+    height: 615rpx;
+    width: 620rpx;
+    margin: auto;  
+}
+.viewp image{
+    height: 615rpx;
+    width: 620rpx;
+    border-radius: 20rpx;
+}
+
+.video {
+    border-radius: 10px;
+}
+.a{
+    display: flex;
+    justify-content: center;
+    margin-top: 120rpx;
+}
+/* audio{
+  position: relative;
+}
+audio .free-MusicProgress{
+  position: absolute;
+  width:78%;
+  left:21.7%;
+  bottom:1px;
+  background:#C3C3C3;
+}
+audio .free-MusicProgress>view{
+  background:#48c23d;
+  height:2px;
+} */
+.abc{
+    margin-top: 42rpx;
+    display: flex;
+    justify-content: center;
+}

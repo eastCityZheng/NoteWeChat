@@ -1,0 +1,58 @@
+{
+    "pages": [
+       
+        "pages/userinfo/userinfo",
+        "pages/index/index",
+        "pages/gzmb/gzmb",
+        "pages/gzs/gzs",
+        "pages/twowm/twowm",
+        "pages/record/record",
+        "pages/add/add",
+        "pages/roominfo/roominfo",
+        "pages/BuildNote/BuildNote",
+        "pages/BuildNote2/BuildNote2",
+        "pages/bq/bq",
+        "pages/BuildNote3_record/BuildNote3_record",
+        "pages/editNote/editNote",
+        "pages/editTeamNote/editTeamNote",
+        "pages/Other/Other",
+        "pages/mbxz/mbxz",
+        "pages/yan/yan"
+      
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "小程序",
+        "backgroundColor": "#f8f8f8",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false
+    },
+    "tabBar": {
+        "navigationBarBackgroundColor": "#ffffff",
+        "color": "#888b8f",
+        "selectedColor": "#509aff",
+        "borderStyle": "white",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "便签",
+                "iconPath": "images/bq1.png",
+                "selectedIconPath": "images/bq2.png"
+
+            },
+            {
+                "pagePath": "pages/gzs/gzs",
+                "text": "工作室",
+                "iconPath": "images/gzs1.png",
+                "selectedIconPath": "images/gzs2.png"
+            },
+            {
+                "pagePath": "pages/yan/yan",
+                "text": "发现",
+                "iconPath": "images/fx1.png",
+                "selectedIconPath": "images/fx2.png"
+            }
+        ]
+    }
+}

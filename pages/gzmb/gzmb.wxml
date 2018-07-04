@@ -1,0 +1,50 @@
+<!--pages/gzmb/gzmb.wxml-->
+<view class='view'>
+    <view class='view1'>
+        <view class='view1_1'>
+            <text class='text'>{{username}}</text>
+        </view>
+        <view class='view1_2'>
+            <image src='../../images/other.png' class='images3' bindtap='other'></image>
+        </view>
+    </view>
+    <view style='margin-top:145rpx;'>
+        <view class='view2' wx:for="{{program}}">
+            <view class='view2_1'bindtap='bq' data-tn_id='{{item.tn_id}}' style="{{item.txtStyle}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}">
+                <view style='display:flex; flex-direction:column;'>
+                    <view class='view2_1_2' >
+                        <text class='n_content' style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.tn_content}}">{{item.tn_content}}</text>
+                    </view>
+                    <view class='new2_1'>
+                        <view style='width:56rpx; height:56rpx; border-radius:100rpx;'>
+                            <image src='{{item.tn_headimg}}' style='width:56rpx; height:56rpx; border-radius:100rpx;'></image>
+                        </view>
+                        <view style='display: flex;flex-direction: column; margin-left:19rpx;'>
+                            <text style='font-size:18rpx; color:#a9a9a9;'>{{item.tn_nickname}}</text>
+                            <text style='font-size:18rpx; margin-top: 10rpx; color:#a9a9a9;'>周五 04/20 17:50</text>
+                        </view>
+                    </view>
+                </view>
+                <view class='view2_1_1' style='background-color:{{colorx[item.tn_color]}};'></view>
+            </view>
+            <view class='dlview'>
+                <image src='../../images/dlt.png' bindtap="delItem"data-tn_id='{{item.tn_id}}'  data-index="{{index}}"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='rview' bindtap='deu' style='transform:rotate({{deu}}deg); transition: all 0.15s linear;'>
+    <image class='imager' src='../../images/jh.png'></image>
+</view>
+<view class='tview' style='height:{{hh}}rpx; transition:all 0.15s linear;'>
+    <image src='../../images/video.png' style='width:42rpx;height:32rpx; margin-top:38rpx;' bindtap='video'></image>
+    <image src='../../images/translation.png' style='width:29rpx; height:42rpx; margin-top:28rpx;' bindtap='translation'></image>
+    <image src='../../images/document.png' style='width:32rpx;height:36rpx; margin-top:28rpx;' bindtap='document'></image>
+</view>
+<!-- 弹出层-->
+<view class='modal-box' hidden='{{flag}}' bindtap='hide' >
+    <view class='modal' >
+        <view class='pai' bindtap='pai'>拍摄</view>
+        <view class='select' bindtap='select'>从相册选择</view>
+    </view>
+</view>

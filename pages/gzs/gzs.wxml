@@ -1,0 +1,46 @@
+<!--pages/gzs/gzs.wxml-->
+<view class='view'>
+    <view class='view1'>
+        <view class='view1_1'>
+            <text class='text'>{{username}}的工作室</text>
+        </view>
+        <view class='view1_2'>
+            <image src='../../images/sys.png' class='images3' bindtap='sys'></image>
+        </view>
+    </view>
+    <view style='margin-top:145rpx;'>
+        <view class='view2' wx:for="{{program}}">
+            <view class='view2_1' style="{{item.txtStyle}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" data-tp_name='{{item.tp_name}}'  data-tp_id='{{item.tp_id}}' bindtap='v2_1'>
+                <view class='newview' >
+                    <image style='width:111rpx;height:111rpx;' src='{{cimg[item.tp_color]}}'>
+                    </image>
+                </view>
+                <view class='view2_1_2'>
+                    <view class='view2_1_2_2'>
+                        <text style='font-size:30rpx;' data-tatle="{{item.tp_name}}" >{{item.tp_name}}</text>
+                        <view class='star'>
+                        <image src='{{star[item.tp_top]}}' style='width:30rpx; height:30rpx;' catchtap='xx' data-tp_top="{{item.tp_top}}" data-tp_id='{{item.tp_id}}'  data-index="{{index}}"></image>
+                        </view>
+                    </view>
+
+                    <view >
+                        <text style='font-size:24rpx;margin-top: 10rpx;color:#cdcdcd;' data-tatle="{{item.tatle}}">{{item.tp_comment}}</text>
+                    </view>
+                    <view class='view2_1_2_1' >
+                        <view class='a'>
+                            <image src='../../images/dw.png' class='dw'></image>
+                            <text style='font-size:18rpx; margin-top: 14rpx; color:#dbdbdb;'>{{item.tp_addr}}</text>
+                        </view>
+                        <text style='font-size:18rpx; margin-top: 14rpx; color:#a9a9a9;'>{{item.tp_time}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class='dlview'>
+                <image src='../../images/dlt.png' data-tp_id='{{item.tp_id}}' bindtap="delItem" data-index="{{index}}"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='rview' bindtap='deu' style='transform:rotate({{deu}}deg); transition: all 0.15s linear;'>
+    <image class='imager' src='../../images/jh.png'></image>
+</view>

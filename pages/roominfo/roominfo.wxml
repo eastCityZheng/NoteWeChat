@@ -1,0 +1,58 @@
+<!--pages/a/add.wxml-->
+<view class='body'>
+  <view class='first'>
+        <view class='name'>
+          <view class='name_1'>白板名称</view>
+          <view class='name_input'><input value='{{tp.tp_name}}' data-tablename='Teampanel' data-attr='tp_name' bindinput="userNameInput" bindblur='changename' ></input></view>
+        </view> 
+        <view class='xian'></view>
+        <view class='beizhu'>
+        <view class='name_1'>白板备注</view>
+          <view class='name_input'><input value='{{tp.tp_comment}}' data-tablename='Teampanel' data-attr='tp_comment' bindblur='changename'></input>
+          </view>
+        </view>
+        <view class='xian'></view>
+        <view class='beizhu'bindtap='QRcode'>
+        <view class='name_1' >面板二维码</view>
+         <view class='.name_img'> <image src='../../images/erweima.png'></image></view>
+        </view>
+  </view>
+  <view class='second'>
+        <view class='select_color'>
+        <view class='select_left'>选择颜色</view>
+          <view class='select_right'>
+            <view class="{{colortype==0?'circle.s1':'circle'}}" bindtap='s1' data-tablename='Teampanel' data-attr='tp_color' style=' border: 1rpx solid #ff6666;'></view>
+            <view class="{{colortype==1?'circle.s2':'circle'}}" bindtap='s2' data-tablename='Teampanel' data-attr='tp_color' style=' border: 1rpx solid #498eff;'></view>
+            <view class="{{colortype==2?'circle.s3':'circle'}}" bindtap='s3' data-tablename='Teampanel' data-attr='tp_color' style=' border: 1rpx solid #c68efe;'></view>
+            <view class="{{colortype==3?'circle.s4':'circle'}}" bindtap='s4' data-tablename='Teampanel' data-attr='tp_color' style=' border: 1rpx solid #19dfb8;'></view>
+          </view>
+        </view>
+        <view class='xian'></view>
+        <view class='place'>
+            <view class='place_left'>地理位置</view>
+            <view class='place_right' bindtap='changetoMap'>
+              <view class='place_text'>
+                  <text>{{tp.tp_addr}}</text>
+                  <!--经{{Mylongitude}}纬{{Mylatitude}}-->
+              </view>
+                <image src='../../images/Path.png'></image>
+            </view>
+            <view >
+        </view>
+        </view>
+  </view>
+
+  <view class='thred'>
+    <view class='stick'>
+    <view class='name_1'>工作室置顶</view>
+      <view class="tui-menu-list">  
+        <switch class="tui-fr" color="#2c9af5" checked="{{jr.jr_top}}" bindchange="changeSwitch4"/>
+      </view>
+    </view>
+    <view class='xian'></view>  
+    <view class='name'>
+    <view class='name_1'>工作室中昵称</view>
+          <view class='name_input'><input value='{{jr.jr_nickname}}' data-tablename='jobrelation' data-attr='jr_nickname' bindinput="userNameInput" bindblur='changename'></input></view>
+        </view> 
+  </view>
+</view>

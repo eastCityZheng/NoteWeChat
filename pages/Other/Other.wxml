@@ -1,0 +1,19 @@
+<!--pages/SeeOtherNote/SeeOtherNote.wxml-->
+<view class='view1'>
+    <view class='view1_1'>
+        <text class='text'>{{username}}的便签</text>
+    </view>
+</view>
+<view style='margin-top:145rpx;'>
+    <view class='view2' wx:for="{{program}}" data-n_id='{{item.n_id}}' bindtap='tobq'>
+        <view class='view2_1' style="{{item.txtStyle}}" data-index="{{index}}">
+            <view class='view2_1_2'>
+                <text style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.n_content}}">{{item.n_content}}</text>
+                <text style='font-size:18rpx; margin-top: 14rpx; color:#a9a9a9;'>{{item.n_time}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='view3'>
+    <button>前往留言</button>
+</view>

@@ -1,0 +1,15 @@
+<!--pages/mbxz/mbxz.wxml-->
+<view class='view' >
+    <image class='image' src='{{image}}'></image>
+    <view class='text'>
+        <text style=''>{{text}}</text>
+    </view>
+
+    <image class='image2' src='{{image2}}'></image>
+</view>
+<view class='view' wx:for="{{program}}" data-u_id='{{item.u_id}}' data-nickname='{{item.nickname}}' bindtap='toOther'>
+    <image class='image' src='{{item.headimg}}'></image>
+    <view class='text'>
+        <text style=''>{{item.nickname}}</text>
+    </view>
+</view>

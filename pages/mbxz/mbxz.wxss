@@ -1,0 +1,29 @@
+/* pages/mbxz/mbxz.wxss */
+
+.view {
+    height: 138rpx;
+    width: 750rpx;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.image {
+    height: 100rpx;
+    width: 100rpx;
+    margin-left: 20rpx;
+}
+
+.text {
+    width:514rpx;
+    height: 138rpx;
+    margin-left: 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.image2 {
+    height: 26rpx;
+    width: 36rpx;
+}

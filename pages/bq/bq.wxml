@@ -1,0 +1,43 @@
+<!--pages/bq/bq.wxml-->
+<view class='view'>
+    <view class='view1'>
+        <view class='view1_1'>
+            <text class='text'>{{username}}的便签</text>
+        </view>
+        <view class='view1_2'>
+            <image src='../../images/bqedit.png' class='images2' bindtap='swm' ></image>
+            <image src='../../images/empty.png' class='images3' bindtap='sys'></image>
+        </view>
+    </view>
+    <view style=' margin-top:143rpx;'>
+        <!-- 图片1 -->
+        <view style=' margin-top:43rpx;' class='viewp'  wx:if="{{note.n_img1}}">
+            <image  src='{{imgurl+note.n_img1}}' bindtap='images' data-src="{{note.n_img1}}" mode='aspectFill'></image>
+        </view>
+        <!-- 图片2 -->
+        <view style=' margin-top:43rpx;' class='viewp'  wx:if="{{note.n_img2}}">
+            <image  src='{{imgurl+note.n_img2}}' bindtap='images' data-src="{{note.n_img2}}" mode='aspectFill'></image>
+        </view>
+        <!-- 图片3 -->
+        <view style=' margin-top:43rpx;' class='viewp'  wx:if="{{note.n_img3}}">
+            <image  src='{{imgurl+note.n_img3}}' bindtap='images' data-src="{{note.n_img3}}" mode='aspectFill'></image>
+        </view>
+        <!-- 图片4 -->
+        <view style=' margin-top:43rpx;' class='viewp'  wx:if="{{note.n_img4}}">
+            <image  src='{{imgurl+note.n_img4}}' bindtap='images' data-src="{{note.n_img4}}" mode='aspectFill'></image>
+        </view>
+    </view>
+    <view style='width:669rpx;height:160rpx;margin-top:46rpx; margin-left:auto;margin-right:auto;'>
+        <text style='width:669rpx;height:160rpx;font-size: 30rpx;' >{{note.n_content}}</text>
+    </view>
+    <view class='a' wx:if="{{note.n_video}}">
+        <video src="{{imgurl+note.n_video}}" binderror="videoErrorCallback" class='video'></video>
+    </view>
+    <view class="abc" wx:if="{{note.n_audio}}">
+        <audio   author="{{author}}" poster='{{poster}}' src="{{imgurl+note.n_audio}}" id="myAudio" controls loop bindtimeupdate="audioPress" style='background-color:#F8F8F8 ' bindtouchend='startandpause'>
+            <progress percent="{{audioPress}}" stroke-width="1" />
+        </audio>
+    </view>
+    <view style='height:80rpx;'>
+    </view>
+</view>

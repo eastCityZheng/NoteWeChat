@@ -1,0 +1,26 @@
+<!--pages/userinfo/userinfo.wxml-->
+
+<view class='body'>
+<view class='swiperview'>
+    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="500" indicator-active-color='#77a9fb'>    
+     <swiper-item>
+       <image class='imager'src='../../images/1.jpg'></image>
+    </swiper-item>
+    <swiper-item>
+       <image class='imager'src='../../images/2.jpg'></image>
+    </swiper-item>
+    <swiper-item>
+       <image class='imager'src='../../images/3.jpg'></image>
+    </swiper-item>   
+    </swiper>  
+    </view>
+<button 
+    class='button'
+    wx:if="{{canIUse}}" 
+    open-type="getUserInfo" 
+    bindgetuserinfo="bindGetUserInfo"
+>授权登录</button> 
+</view>
+
+
+

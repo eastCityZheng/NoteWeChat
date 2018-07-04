@@ -1,0 +1,44 @@
+<!--pages/add/add.wxml-->
+<view class='body'>
+  <view class='first'>
+        <view class='name'>
+          <view class='name_1'>白板名称</view>
+          <view class='name_input'><input placeholder='请输入名称'  bindinput="userNameInput"></input></view>
+          <view class='name_img'><image  src='../../images/green.png'></image></view>
+        </view>
+        <view class='xian'></view>
+        <view class='beizhu'>
+        <view class='name_1'>白板备注</view>
+          <view class='name_input'>
+            <input placeholder='请输入备注' bindinput='changecommont'></input>
+          </view>
+        </view>
+  </view>
+  <view class='second'>
+        <view class='select_color'>
+        <view class='select_left'>选择颜色</view>
+          <view class='select_right'>
+            <view class="{{colortype==0?'circle.s1':'circle'}}" bindtap='s1' style=' border: 1rpx solid #ff6666;'></view>
+            <view class="{{colortype==1?'circle.s2':'circle'}}" bindtap='s2' style=' border: 1rpx solid #498eff;'></view>
+            <view class="{{colortype==2?'circle.s3':'circle'}}" bindtap='s3' style=' border: 1rpx solid #c68efe;'></view>
+            <view class="{{colortype==3?'circle.s4':'circle'}}" bindtap='s4' style=' border: 1rpx solid #19dfb8;'></view>
+          </view>
+        </view>
+        <view class='xian'></view>
+        <view class='place'>
+            <view class='place_left'>地理位置</view>
+            <view class='place_right' bindtap='changetoMap'>
+              <view class='place_text'>
+                  <text>{{name}}</text>
+                  <!--经{{Mylongitude}}纬{{Mylatitude}}-->
+              </view>
+                <image src='../../images/Path.png'></image>
+            </view>
+            <view >
+        </view></view>
+  </view>
+  <view class='add'>
+     				<button class='button' hover-class='button-hover' bindtap="addworkban" >添加工作板</button>
+  </view>
+
+</view>

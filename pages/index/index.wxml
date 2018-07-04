@@ -1,0 +1,45 @@
+<!--pages/index/index.wxml-->
+<view class='view'>
+    <view class='view1'>
+        <view class='view1_1'>
+            <text class='text'>{{username}}</text>
+            <image src='../../images/cg.png' class='images1' bindtap='tofriend'></image>
+        </view>
+        <view class='view1_2'>
+            <image src='../../images/swm.png' class='images2' bindtap='swm'></image>
+            <image src='../../images/sys.png' class='images3' bindtap='sys'></image>
+        </view>
+    </view>
+    <view style='margin-top:145rpx;'>
+        <view class='view2' wx:for="{{program}}">
+            <view class='view2_1' style="{{item.txtStyle}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}">
+                <view class='view2_1_1' style='background-color:{{colorx[item.n_color]}};'></view>
+                <view class='view2_1_2' bindtap='red' data-n_id='{{item.n_id}}'>
+                    <text class='n_content' style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.n_content}}">{{item.n_content}}</text>
+                    <text style='font-size:18rpx; margin-top: 14rpx; color:#a9a9a9;'>{{item.n_time}}</text>
+                </view>
+                <view class='view2_1_3'>
+                    <image style='width:30rpx; height:34rpx; margin-right:30rpx;' src='{{xxsrc[item.n_top]}}' bindtap='xx' data-n_top="{{item.n_top}}" data-n_id='{{item.n_id}}' data-index="{{index}}"></image>
+                </view>
+            </view>
+            <view class='dlview'>
+                <image src='../../images/dlt.png' bindtap="delItem" data-n_id='{{item.n_id}}' data-index="{{index}}"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='rview' bindtap='deu' style='transform:rotate({{deu}}deg); transition: all 0.15s linear;'>
+    <image class='imager' src='../../images/jh.png'></image>
+</view>
+<view class='tview' style='height:{{hh}}rpx; transition:all 0.15s linear;'>
+    <image src='../../images/video.png' style='width:42rpx;height:32rpx; margin-top:38rpx;' bindtap='video'></image>
+    <image src='../../images/translation.png' style='width:29rpx; height:42rpx; margin-top:28rpx;' bindtap='translation'></image>
+    <image src='../../images/document.png' style='width:32rpx;height:36rpx; margin-top:28rpx;' bindtap='document'></image>
+</view>
+<!-- 弹出层-->
+<view class='modal-box' hidden='{{flag}}' bindtap='hide' >
+    <view class='modal' >
+        <view class='pai' bindtap='pai'>拍摄</view>
+        <view class='select' bindtap='select'>从相册选择</view>
+    </view>
+</view>

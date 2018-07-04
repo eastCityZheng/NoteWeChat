@@ -1,0 +1,48 @@
+/* pages/login/login.wxss */
+
+.body{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+.swiperview{
+  height: 850rpx;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 70rpx;
+  background-color:#ffffff;
+}
+.button{
+  bottom: 120rpx;
+  margin-left: 187.5rpx;
+  width: 50%;
+  height: 70rpx;
+  position: fixed;
+  letter-spacing: 5rpx;
+  justify-content: center; 
+  color: white;
+  font-size: 30rpx;
+  border-radius: 10rpx;
+  background-color: #77a9fb;
+  box-shadow: 0rpx 0rpx 15rpx #77a9fb;
+}
+
+.swiper{
+  height: 900rpx;
+  width: 100%;
+  display: flex;
+}
+
+.slide-image{
+  display: flex;  
+  flex-direction: column;  
+  justify-content: center; 
+  height: 600rpx;
+  width: 100%
+}
+
+.imager{
+  height: 900rpx;
+  width: 750rpx;
+}

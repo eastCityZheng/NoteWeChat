@@ -1,0 +1,71 @@
+<!--pages/BuildNote/BuildNote.wxml-->
+<view class='body'>
+  <view class='bar'>
+      <view class='bar_left'>新建的便签</view>
+      <view class='bar_right' bindtap='changetoXX'>
+        <image src='../../images/right.png'></image>
+      </view>
+  </view>
+
+  <view class='first_white'>
+     <textarea maxlength='1000' hidden='{{textareashow}}' style='margin-top:10rpx; color:#282828;' bindinput='textachange'></textarea>
+      <view class='pictures' style='margin-top: {{imgtop}}rpx;'>
+         <view class="weui-uploader__bd">
+            <view class="weui-uploader__files" id="uploaderFiles" >
+                <block wx:for="{{files}}" wx:key="*this">
+                    <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}" style='float:left'>
+                    <view data-index='{{index}}' catchtap="deleteImg">
+                         <image src='../../images/delete_img.png' class='delete'></image>
+                    </view>
+                         <image class="weui-uploader__img" style='width:127rpx; height:127rpx;margin-left: 15rpx;' src="{{item}}" mode="aspectFill" />
+                     </view>
+                </block>
+            </view>
+            <view class="weui-uploader__input-box" >
+                <view class="weui-uploader__input" bindtap="chooseImage" >
+                <image src='../../images/add.png' class='jiaimage'></image>
+                </view>
+            </view>
+        </view>
+    </view>
+  </view>
+
+  <view class='select_color'>
+    <view class='select_left'>选择颜色</view>
+    <view class='select_right'>
+      <view class="{{colortype==0?'circle.s1':'circle'}}" bindtap='s1'style=' border: 1rpx solid #ff6666;'></view>
+      <view class="{{colortype==1?'circle.s2':'circle'}}" bindtap='s2' style=' border: 1rpx solid #498eff;'></view>
+      <view class="{{colortype==2?'circle.s3':'circle'}}" bindtap='s3' style=' border: 1rpx solid #c68efe;'></view>
+      <view class="{{colortype==3?'circle.s4':'circle'}}" bindtap='s4' style=' border: 1rpx solid #ffc949;'></view>
+      <view class="{{colortype==4?'circle.s5':'circle'}}" bindtap='s5' style=' border: 1rpx solid #feb0fe;'></view>
+      <view class="{{colortype==5?'circle.s6':'circle'}}" bindtap='s6' style=' border: 1rpx solid #ffa94d;'></view>
+    </view>
+  </view>
+  <view class='select_see' wx:if="{{n_page=='index'}}">
+      <view class='select_s_left'>可见的人</view>
+      <view class='select_s_right' bindtap='show'>
+        <text>{{seetype==0?'仅自己可见':'仅扫码可见'}}</text>
+        <image src='../../images/Path.png'></image>
+      </view>
+  </view>
+  <view class='place' wx:if="{{n_page=='index'}}">
+      <view class='place_left'>位置选择</view>
+      <view class='place_right' bindtap='changetoMap'>
+      <view class='place_text'>
+          <text>{{name}}</text>
+          <!--经{{Mylongitude}}纬{{Mylatitude}}-->
+      </view>
+          <image src='../../images/Path.png'></image>
+      </view>
+      <view ></view>
+  </view>
+</view>
+<!--弹出层-->
+<view class='modal-box' hidden='{{flag}}' bindtap='hide' >
+    <view class='modal' >
+        <view class='only' bindtap='only'>仅自己可见</view>
+        <view class='saoma' bindtap='saoma'>仅扫码可见</view>
+
+    </view>
+</view>
+

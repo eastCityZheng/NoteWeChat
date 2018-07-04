@@ -1,0 +1,68 @@
+/* pages/SeeOtherNote/SeeOtherNote.wxss */
+
+.view1 {
+    z-index: 10;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 750rpx;
+    height: 103rpx;
+    background-color: #2c99f4;
+    display: flex;
+    justify-content: space-between;
+}
+
+.view1_1 {
+    width: 300rpx;
+    height: 103rpx;
+    line-height: 103rpx;
+    margin-left: 27rpx;
+}
+
+.text {
+    color: white;
+    font-size: 40rpx;
+}
+
+.view2 {
+    position: relative;
+}
+
+.view2_1 {
+    width: 695rpx;
+    height: 120rpx;
+    margin: 0 auto;
+    margin-top: 42rpx;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #eaeaea;
+    background-color: white;
+    display: flex;
+    position: relative;
+    z-index: 4;
+}
+
+.view2_1_2 {
+    margin-left: 39rpx;
+    width: 500rpx;
+    height: 120rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.view3 {
+    margin-top: 105rpx;
+    margin-left: auto;
+    margin-right: auto;
+    height: 70rpx;
+    width: 360rpx;
+}
+
+.view3 button {
+    background-color: #2d92f6;
+    box-shadow: 0 0 5px #3797f6;
+    height: 70rpx;
+    width: 360rpx;
+    color: white;
+    line-height: 70rpx;
+    font-size: 32rpx;
+}

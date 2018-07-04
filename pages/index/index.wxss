@@ -1,0 +1,196 @@
+/* pages/index/index.wxss */
+
+.view {
+    width: 750rpx;
+    background-color: #f8f8f8;
+}
+
+.view1 {
+    z-index: 10;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 750rpx;
+    height: 103rpx;
+    background-color: #2c9af5;
+    display: flex;
+    justify-content: space-between;
+    box-shadow:  -1px 2rpx 10rpx #2c98f6;
+}
+
+.view1_1 {
+    width: 300rpx;
+    height: 103rpx;
+    line-height: 103rpx;
+    margin-left: 27rpx;
+}
+
+.view1_2 {
+    width: 300rpx;
+    height: 103rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 44rpx;
+}
+
+.text {
+    color: white;
+    font-size: 41rpx;
+}
+
+.images1 {
+    width: 28rpx;
+    height: 28rpx;
+    margin-left: 17rpx;
+}
+
+.images2 {
+    width: 42rpx;
+    height: 42rpx;
+    float: right;
+}
+
+.images3 {
+    width: 42rpx;
+    height: 42rpx;
+    float: right;
+    margin-left: 38rpx;
+}
+
+.view2 {
+    position: relative;
+}
+
+.view2_1 {
+    width: 695rpx;
+    height: 120rpx;
+    margin: 0 auto;
+    margin-top: 42rpx;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #eaeaea;
+    background-color: white;
+    display: flex;
+    position: relative;
+    z-index: 4;
+}
+
+.dlview {
+    position: absolute;
+    top:0px;
+    margin:0 auto;
+    margin-left: 29rpx;
+    width: 695rpx;
+    height: 120rpx;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.dlview image {
+    z-index: 3;
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.view2_1_1 {
+    width: 10rpx;
+    height: 120rpx;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.view2_1_2 {
+    margin-left: 39rpx;
+    width: 500rpx;
+    height: 120rpx;
+    display: flex;
+    flex-direction: column;
+}
+
+.view2_1_3 {
+    width: 144rpx;
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.rview {
+    position: fixed;
+    background-color: #509aff;
+    box-shadow: 0px 0px 3px #2f76f9;
+    right: 35rpx;
+    bottom: 28rpx;
+    z-index: 100;
+    width: 99rpx;
+    height: 99rpx;
+    border-radius: 100rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imager {
+    z-index: 101;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.tview {
+    position: fixed;
+    background-color: #509aff;
+    box-shadow: 0px 0px 3px #2f76f9;
+    right: 43rpx;
+    bottom: 78rpx;
+    z-index: 90;
+    width: 81rpx;
+    height: 265rpx;
+    border-radius: 81rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.modal-box{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  background:rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 1000;
+  }
+  .modal{
+    z-index: 10001;
+    margin: auto;
+    margin-top: 420rpx;
+    width: 550rpx;
+    height: 180rpx;
+    background-color: white;
+    border-radius: 7rpx;
+    letter-spacing: 5rpx;
+    font-size: 30rpx;
+  }
+    .pai{
+    padding-left: 50rpx;
+    line-height: 90rpx;
+    height: 90rpx;
+    border-bottom: 1rpx solid #eeeeee;
+  }
+  .select{
+    padding-left: 50rpx;
+    line-height: 90rpx;
+    height: 90rpx;
+  }
+  .n_content{
+   /*省略 */
+    display: -webkit-box ; 
+    overflow: hidden;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+    text-overflow:ellipsis;
+}

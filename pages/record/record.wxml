@@ -1,0 +1,36 @@
+<!--pages/record/record.wxml-->
+<!--弹出层-->
+<view class='modal-box' hidden='{{flag1}}' bindtap='hide1' >
+    <view class='modal' >录音已成功删除</view>
+</view>
+<view class='modal-box' hidden='{{flag2}}' bindtap='hide2' style="z-index:5;">
+    <view class='modal'>录音已保存</view>
+</view>
+<view class='number' 
+style='margin-top:{{2*cy-cr}}rpx;line-height: {{2*vr}}rpx;font-size: {{2*(73.5 /603 *screenHeight)}}rpx;height: {{2*vr}}rpx;'>{{second}}<text>s</text></view>
+
+<view class='body'>
+<!--计时动画-->
+  <view class='timecanvas'  >
+     <canvas class="circle" canvas-id="canvasCircle" style="z-index:-1;">
+    </canvas>
+    <canvas class="circle" canvas-id="canvasArcCir" style="z-index:-1;">
+    </canvas>
+  </view>
+<!--文字-->
+  <view class='timetext' style='top:{{(2*cy+3*cr)}}rpx;'>录制时间最长60s</view>
+<!--下方图标-->
+  <view class='operation'>
+    <view class='delete' bindtap='show1'>
+      <image src='../../images/delete.png'></image>
+    </view>
+    <view class='record' bindtap='Startrecord'>
+      <image src='../../images/{{type}}.png'></image>
+    </view>
+    <view class='use' bindtap='show2'>
+        <image src='../../images/use.png'></image>
+    </view>
+
+   </view>
+
+</view>
