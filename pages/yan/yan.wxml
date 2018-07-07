@@ -7,12 +7,12 @@
     <view class='body_text'>
         <view class='text1' hidden='{{flag}}'>
             <view>
-                <view class='view2' wx:for="{{program}}">
+                <view class='view2' wx:for="{{program}}" bindtap='tobq' data-n_id='{{item.n_id}}'>
                     <view class='view2_1' style="{{item.txtStyle}}" data-index="{{index}}">
-                        <view class='view2_1_1' style='background-color:{{colorx[item.color]}};'></view>
+                        <view class='view2_1_1' style='background-color:{{colorx[item.n_color]}};'></view>
                         <view class='view2_1_2'>
-                            <text style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.tatle}}">{{item.tatle}}</text>
-                            <text style='font-size:18rpx; margin-top: 14rpx; color:#a9a9a9;'>{{item.time}}</text>
+                            <text style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.n_content}}">{{item.n_content}}</text>
+                            <text style='font-size:18rpx; margin-top: 14rpx; color:#a9a9a9;'>{{item.n_time}}</text>
                         </view>
                     </view>
                 </view>
@@ -21,22 +21,22 @@
         <view class='text2' hidden='{{flag2}}'>
             <view >
                 <view class='hview2' wx:for="{{program2}}">
-                    <view class='hview2_1' style="{{item.txtStyle}}"  data-index="{{index}}">
+                    <view class='hview2_1' style="{{item.txtStyle}}"  data-index="{{index}}" bindtap='meNote' data-m_id='{{item.m_id}}'>
                         <view style='display:flex; flex-direction:column;'>
                             <view class='hview2_1_2'>
-                                <text style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.tatle}}">{{item.tatle}}</text>
+                                <text style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.m_content}}">{{item.m_content}}</text>
                             </view>
                             <view class='hnew2_1'>
                                 <view style='width:56rpx; height:56rpx; border-radius:100rpx;'>
-                                    <image src='{{item.txsrc}}' style='width:56rpx; height:56rpx; border-radius:100rpx;'></image>
+                                    <image src='{{item.u_headimg}}' style='width:56rpx; height:56rpx; border-radius:100rpx;'></image>
                                 </view>
                                 <view style='display: flex;flex-direction: column; margin-left:19rpx;'>
-                                    <text style='font-size:18rpx; color:#a9a9a9;'>{{item.username}}</text>
-                                    <text style='font-size:18rpx; margin-top: 10rpx; color:#a9a9a9;'>{{item.time}}</text>
+                                    <text style='font-size:18rpx; color:#a9a9a9;'>{{item.u_nickname}}</text>
+                                    <text style='font-size:18rpx; margin-top: 10rpx; color:#a9a9a9;'>{{item.m_time}}</text>
                                 </view>
                             </view>
                         </view>
-                        <view class='hview2_1_1' style='background-color:{{colorx[item.color]}};'></view>
+                        <view class='hview2_1_1' style='background-color:{{colorx[item.m_color]}};'></view>
                     </view>
                 </view>
             </view>

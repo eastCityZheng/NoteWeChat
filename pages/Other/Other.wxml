@@ -15,5 +15,5 @@
     </view>
 </view>
 <view class='view3'>
-    <button>前往留言</button>
+    <button bindtap='tomessage' >前往留言</button>
 </view>

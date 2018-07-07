@@ -83,7 +83,12 @@ Page({
       })
 
     },
-
+  tomessage:function(res){
+    var that=this;
+    wx.navigateTo({
+      url: '../message/message?uu_id='+that.data.u_id,
+    })
+  },
     /**
      * 生命周期函数--监听页面隐藏
      */
