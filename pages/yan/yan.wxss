@@ -122,3 +122,16 @@
     margin-top: 25rpx;
     height: 75rpx;
 }
+.view2_1_2_1{
+    margin-left:120rpx;
+    width: 500rpx;
+    height: 120rpx;
+    line-height: 70rpx;
+    margin-top: 55%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+  .n_contents{
+   letter-spacing: 5rpx;
+}

@@ -29,8 +29,8 @@ App({
     
   },
   appServlet: {
-    servlet: 'http://localhost:8080/NoteWechat/'
-    // servlet:'https://www.bcuvote.top/NoteWechat/'
+    // servlet: 'http://localhost:8080/NoteWechat/'
+    servlet:'https://www.bcuvote.top/NoteWechat/'
   },
   appuserinfo: {
     openid: "",

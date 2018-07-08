@@ -11,7 +11,13 @@
         </view>
     </view>
     <view style='margin-top:145rpx;'>
-        <view class='view2' wx:for="{{program}}">
+        <view class='view2' wx:if="{{program.length==0}}">
+            <view class='view2_1_2_1'>
+                <text class='n_contents' style='font-size:35rpx;margin-top: 28rpx;'>\t亲，你还没有添加便签~\n点击加号创建你的专属便签</text>
+            </view>
+        </view> 
+
+         <view class='view2' wx:for="{{program}}">
             <view class='view2_1' style="{{item.txtStyle}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}">
                 <view class='view2_1_1' style='background-color:{{colorx[item.n_color]}};'></view>
                 <view class='view2_1_2' bindtap='red' data-n_id='{{item.n_id}}'>
@@ -25,7 +31,7 @@
             <view class='dlview'>
                 <image src='../../images/dlt.png' bindtap="delItem" data-n_id='{{item.n_id}}' data-index="{{index}}"></image>
             </view>
-        </view>
+        </view> 
     </view>
 </view>
 <view class='rview' bindtap='deu' style='transform:rotate({{deu}}deg); transition: all 0.15s linear;'>
