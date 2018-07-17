@@ -7,11 +7,12 @@
     <view class='body_text'>
         <view class='text1' hidden='{{flag}}'>
             <view>
-              <view class='view2' wx:if="{{program.length==0}}">
-                <view class='view2_1_2_1'>
-                  <text class='n_contents' style='font-size:35rpx;margin-top: 28rpx;'>\t亲，你附近没有你的便签~</text>
+                <view class='view2' wx:if="{{program.length==0}}">
+                    <view class='view2_1_2_1' style='height:{{ht}}px;'>
+                        <!-- <text class='n_contents' style='font-size:35rpx;margin-top: 28rpx;'>\t亲，你附近没有你的便签~</text> -->
+                        <image src='../../images/sbbq.png' style='height:400rpx;width:400rpx'></image>
+                    </view>
                 </view>
-              </view> 
                 <view class='view2' wx:for="{{program}}" bindtap='tobq' data-n_id='{{item.n_id}}'>
                     <view class='view2_1' style="{{item.txtStyle}}" data-index="{{index}}">
                         <view class='view2_1_1' style='background-color:{{colorx[item.n_color]}};'></view>
@@ -24,14 +25,15 @@
             </view>
         </view>
         <view class='text2' hidden='{{flag2}}'>
-            <view >
-             <view class='view2' wx:if="{{program2.length==0}}">
-                <view class='view2_1_2_1'>
-                  <text class='n_contents' style='font-size:35rpx;margin-top: 28rpx;'>\t亲，还没有别人给你留言哦~~</text>
+            <view>
+                <view class='view2' wx:if="{{program2.length==0}}">
+                    <view class='view2_1_2_1' style='height:{{ht}}px;'>
+                        <!-- <text class='n_contents' style='font-size:35rpx;margin-top: 28rpx;'>\t亲，还没有别人给你留言哦~~</text> -->
+                        <image src='../../images/04.png' style='height:400rpx;width:400rpx'></image>
+                    </view>
                 </view>
-              </view> 
                 <view class='hview2' wx:for="{{program2}}">
-                    <view class='hview2_1' style="{{item.txtStyle}}"  data-index="{{index}}" bindtap='meNote' data-m_id='{{item.m_id}}'>
+                    <view class='hview2_1' style="{{item.txtStyle}}" data-index="{{index}}" bindtap='meNote' data-m_id='{{item.m_id}}'>
                         <view style='display:flex; flex-direction:column;'>
                             <view class='hview2_1_2'>
                                 <text style='font-size:26rpx;margin-top: 28rpx;' data-tatle="{{item.m_content}}">{{item.m_content}}</text>

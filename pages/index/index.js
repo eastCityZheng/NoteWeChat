@@ -21,15 +21,16 @@ Page({
         delBtnWidth: 77,
         deui: 0,
         deu: null,
+        ht: null,
         hh: 0,
         animationData: {},
         flag: true,
         src: '',
         program: null,
-        QRcode:''
+        QRcode: ''
     },
     //手指刚放到屏幕触发 
-    touchS: function (e) {
+    touchS: function(e) {
         console.log("touchS" + e);
         //判断是否只有一个触摸点 
         if (e.touches.length == 1) {
@@ -40,7 +41,7 @@ Page({
         }
     },
     //触摸时触发，手指在屏幕上每移动一次，触发一次 
-    touchM: function (e) {
+    touchM: function(e) {
         console.log("touchM:" + e);
         var that = this
         if (e.touches.length == 1) { //记录触摸点位置的X坐标 
@@ -72,7 +73,8 @@ Page({
                 [asd]: txtStyle
             });
         }
-    }, touchE: function (e) {
+    },
+    touchE: function(e) {
         console.log("touchE" + e);
         var that = this
         if (e.changedTouches.length == 1) {
@@ -94,53 +96,52 @@ Page({
             });
         }
     },
-    tofriend:function(e){
-      wx.navigateTo({
-        url: '../mbxz/mbxz',
-      })
-    },
-    delItem: function (e) {
-      var that=this;
-        var index = e.target.dataset.index;
-        console.log("删除" + index);
-        
-        wx.request({
-          url: DeleteNote_url,
-          data: {
-            n_id:e.target.dataset.n_id
-          },
-          header: {
-            "Content-Type":"json"
-          },
-          method: 'GET',
-          success: function(res) {
-            console.log(res.data)
-            if(res.data==true)
-            {
-              wx.showToast({
-                title: '删除成功！',
-                icon: 'success',
-                duration: 1000
-              })
-              var program = that.data.program;
-              var newprogram = that.data.program;
-              newprogram.splice(index, 1)
-              that.setData({
-                program: newprogram
-              });
-            }else{
-              wx.showToast({
-                title: '删除失败！',
-                icon: 'none',
-                duration: 1000
-              })
-            }
-          },
-          fail: function(res) {},
-          complete: function(res) {},
+    tofriend: function(e) {
+        wx.navigateTo({
+            url: '../mbxz/mbxz',
         })
     },
-    deu: function (res) {
+    delItem: function(e) {
+        var that = this;
+        var index = e.target.dataset.index;
+        console.log("删除" + index);
+
+        wx.request({
+            url: DeleteNote_url,
+            data: {
+                n_id: e.target.dataset.n_id
+            },
+            header: {
+                "Content-Type": "json"
+            },
+            method: 'GET',
+            success: function(res) {
+                console.log(res.data)
+                if (res.data == true) {
+                    wx.showToast({
+                        title: '删除成功！',
+                        icon: 'success',
+                        duration: 1000
+                    })
+                    var program = that.data.program;
+                    var newprogram = that.data.program;
+                    newprogram.splice(index, 1)
+                    that.setData({
+                        program: newprogram
+                    });
+                } else {
+                    wx.showToast({
+                        title: '删除失败！',
+                        icon: 'none',
+                        duration: 1000
+                    })
+                }
+            },
+            fail: function(res) {},
+            complete: function(res) {},
+        })
+    },
+    deu: function(res) {
         var that = this
         if (this.data.deui == 0) {
             that.setData({
@@ -148,8 +149,7 @@ Page({
                 deui: 1,
                 hh: 270,
             })
-        }
-        else {
+        } else {
             that.setData({
                 deu: 0,
                 deui: 0,
@@ -158,68 +158,67 @@ Page({
         }
 
     },
-    sys: function (res) {
+    sys: function(res) {
         wx.scanCode({
             success: (pres) => {
-              if(pres.result==app.appuserinfo.u_id){
-                wx.showToast({
-                  title: '不能扫描自己的二维码！',
-                  icon: 'none',
-                  duration: 1000
-                })
-              }else{
-                wx.request({
-                  url: InsertPersonal_url,
-                  data: {
-                    uu_id: pres.result,
-                    u_id: app.appuserinfo.u_id
-                  },
-                  header: {
-                    "Content-Type": "json"
-                  },
-                  method: 'GET',
-                  dataType: 'json',
-                  responseType: 'text',
-                  success: function (res) {
-                    console.log(res.data)
-                    if(res.data==true){
-
-                      wx.navigateTo({
-                        url: "../Other/Other?u_id=" + pres.result,
-                      })
-                    }
-                    else{
-                      wx.showToast({
-                        title: '扫描失败！',
+                if (pres.result == app.appuserinfo.u_id) {
+                    wx.showToast({
+                        title: '不能扫描自己的二维码！',
                         icon: 'none',
                         duration: 1000
-                      })
-                    }
-                  },
-                  fail: function (res) {
-                    
-                  },
-                  complete: function (res) { },
-                })
-              }
-            
-                
+                    })
+                } else {
+                    wx.request({
+                        url: InsertPersonal_url,
+                        data: {
+                            uu_id: pres.result,
+                            u_id: app.appuserinfo.u_id
+                        },
+                        header: {
+                            "Content-Type": "json"
+                        },
+                        method: 'GET',
+                        dataType: 'json',
+                        responseType: 'text',
+                        success: function(res) {
+                            console.log(res.data)
+                            if (res.data == true) {
+
+                                wx.navigateTo({
+                                    url: "../Other/Other?u_id=" + pres.result,
+                                })
+                            } else {
+                                wx.showToast({
+                                    title: '扫描失败！',
+                                    icon: 'none',
+                                    duration: 1000
+                                })
+                            }
+                        },
+                        fail: function(res) {
+
+                        },
+                        complete: function(res) {},
+                    })
+                }
+
+
             }
         })
     },
-    swm: function (res) {
-      var that=this;
+    swm: function(res) {
+        var that = this;
         wx.navigateTo({
-          url: '/pages/twowm/twowm?two=' + that.data.QRcode,
+            url: '/pages/twowm/twowm?two=' + that.data.QRcode,
         })
     },
     //查看便签
-    red: function (res) {
-      wx.navigateTo({
-        url: '/pages/bq/bq?n_id='+res.currentTarget.dataset.n_id+'&&n_page=index',
-      })
+    red: function(res) {
+        wx.navigateTo({
+            url: '/pages/bq/bq?n_id=' + res.currentTarget.dataset.n_id + '&&n_page=index',
+        })
     },
-    xx: function (res) {
+    xx: function(res) {
         var that = this
         var n_top = parseInt(res.target.dataset.n_top)
         var index = parseInt(res.target.dataset.index)
@@ -229,228 +228,238 @@ Page({
                 [cha]: 1
             })
             wx.request({
-              url: SetTop_url,
-              data: {
-                  id:res.target.dataset.n_id,
-                  n_top:1,
-                  n_type:"note"
-              },
-              header: {
-                "ContentType":"json"
-              },
-              method: 'GET',
-              success: function(res) {
-                console.log("置顶"+res.data)
-                wx.request({
-                  url: GetOneUserNote_url,
-                  data: {
-                    u_id: app.appuserinfo.u_id
-                  },
-                  header: { "Content-Type": "json" },
-                  method: 'GET',
-                  dataType: 'json',
-                  success: function (res) {
-                    console.log(res.data)
-                    that.setData({
-                      program: res.data
+                url: SetTop_url,
+                data: {
+                    id: res.target.dataset.n_id,
+                    n_top: 1,
+                    n_type: "note"
+                },
+                header: {
+                    "ContentType": "json"
+                },
+                method: 'GET',
+                success: function(res) {
+                    console.log("置顶" + res.data)
+                    wx.request({
+                        url: GetOneUserNote_url,
+                        data: {
+                            u_id: app.appuserinfo.u_id
+                        },
+                        header: {
+                            "Content-Type": "json"
+                        },
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function(res) {
+                            console.log(res.data)
+                            that.setData({
+                                program: res.data
+                            })
+                        },
+                        fail: function(res) {},
+                        complete: function(res) {},
                     })
-                  },
-                  fail: function (res) { },
-                  complete: function (res) { },
-                })
-              },
-              fail: function(res) {},
-              complete: function(res) {},
+                },
+                fail: function(res) {},
+                complete: function(res) {},
             })
-        }
-        else {
+        } else {
             that.setData({
                 [cha]: 0
             })
             wx.request({
-              url: SetTop_url,
-              data: {
-                id: res.target.dataset.n_id,
-                n_top: 0,
-                n_type: "note"
-              },
-              header: {
-                "ContentType": "json"
-              },
-              method: 'GET',
-              success: function (res) {
-                console.log("置顶" + res.data)
-                wx.request({
-                  url: GetOneUserNote_url,
-                  data: {
-                    u_id: app.appuserinfo.u_id
-                  },
-                  header: { "Content-Type": "json" },
-                  method: 'GET',
-                  dataType: 'json',
-                  success: function (res) {
-                    console.log(res.data)
-                    that.setData({
-                      program: res.data
+                url: SetTop_url,
+                data: {
+                    id: res.target.dataset.n_id,
+                    n_top: 0,
+                    n_type: "note"
+                },
+                header: {
+                    "ContentType": "json"
+                },
+                method: 'GET',
+                success: function(res) {
+                    console.log("置顶" + res.data)
+                    wx.request({
+                        url: GetOneUserNote_url,
+                        data: {
+                            u_id: app.appuserinfo.u_id
+                        },
+                        header: {
+                            "Content-Type": "json"
+                        },
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function(res) {
+                            console.log(res.data)
+                            that.setData({
+                                program: res.data
+                            })
+                        },
+                        fail: function(res) {},
+                        complete: function(res) {},
                     })
-                  },
-                  fail: function (res) { },
-                  complete: function (res) { },
-                })
-              },
-              fail: function (res) { },
-              complete: function (res) { },
+                },
+                fail: function(res) {},
+                complete: function(res) {},
             })
         }
     },
-    translation:function(e){
-      wx.navigateTo({
+    translation: function(e) {
+        wx.navigateTo({
             url: '/pages/record/record?page=index',
         })
     },
-    document: function (res) {
-      wx.navigateTo({
-        url: '/pages/BuildNote/BuildNote?page=index',
-      })
+    document: function(res) {
+        wx.navigateTo({
+            url: '/pages/BuildNote/BuildNote?page=index',
+        })
     },
     //弹出层show
-    video: function () {
-      var that = this;
-      this.setData({
-        flag: false,
-        textareashow: true,
-        imgtop: 440,
-      })
+    video: function() {
+        var that = this;
+        this.setData({
+            flag: false,
+            textareashow: true,
+            imgtop: 440,
+        })
     },
     //hide
-    hide: function () {
-      this.setData({
-        flag: true,
-        textareashow: false,
-        imgtop: 70,
-      })
+    hide: function() {
+        this.setData({
+            flag: true,
+            textareashow: false,
+            imgtop: 70,
+        })
     },
     //跳转
-    select: function () {
-      var that = this
-      wx.chooseVideo({
-        sourceType: ['album'],
-        success: function (res) {
-          //  setTimeout(function(){
-          wx.navigateTo({
-            url: '/pages/BuildNote2/BuildNote2?extra=' + JSON.stringify(res.tempFilePath)+"&&page=index",
-          })
-          //  },0)
-        }
-      })
+    select: function() {
+        var that = this
+        wx.chooseVideo({
+            sourceType: ['album'],
+            success: function(res) {
+                //  setTimeout(function(){
+                wx.navigateTo({
+                    url: '/pages/BuildNote2/BuildNote2?extra=' + JSON.stringify(res.tempFilePath) + "&&page=index",
+                })
+                //  },0)
+            }
+        })
     },
-    pai: function () {
-      var that = this
-      wx.chooseVideo({
-        sourceType: ['camera'],
-        success: function (res) {
-          //  setTimeout(function(){
-          wx.navigateTo({
-            url: '/pages/BuildNote2/BuildNote2?extra=' + JSON.stringify(res.tempFilePath)+"&&page=index",
-          })
-          //  },0)
-        }
-      })
+    pai: function() {
+        var that = this
+        wx.chooseVideo({
+            sourceType: ['camera'],
+            success: function(res) {
+                //  setTimeout(function(){
+                wx.navigateTo({
+                    url: '/pages/BuildNote2/BuildNote2?extra=' + JSON.stringify(res.tempFilePath) + "&&page=index",
+                })
+                //  },0)
+            }
+        })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-      var that=this;
-      wx.request({
-        url: GetTeampanelQRcode_url ,
-        data: {
-          tp_id:app.appuserinfo.u_id,
-          n_page:'index'
-        },
-        header: {
-          "Content-Type":"json"
-        },
-        method: 'GET',
-        success: function(res) {
-          that.setData({
-            QRcode:res.data
-          })
-        },
-        fail: function(res) {},
-        complete: function(res) {},
-      })
+    onLoad: function(options) {
+        this.setData({
+            ht: wx.getSystemInfoSync().windowHeight-50
+        })
+        console.log(this.data.ht)
+        var that = this;
+        wx.request({
+            url: GetTeampanelQRcode_url,
+            data: {
+                tp_id: app.appuserinfo.u_id,
+                n_page: 'index'
+            },
+            header: {
+                "Content-Type": "json"
+            },
+            method: 'GET',
+            success: function(res) {
+                that.setData({
+                    QRcode: res.data
+                })
+            },
+            fail: function(res) {},
+            complete: function(res) {},
+        })
+
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
-     
+    onReady: function() {
+
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-      var that = this;
-      wx.request({
-        url: GetOneUserNote_url,
-        data: {
-          u_id: app.appuserinfo.u_id
-        },
-        header: { "Content-Type": "json" },
-        method: 'GET',
-        dataType: 'json',
-        success: function (res) {
-          console.log(res.data)
-          that.setData({
-            program: res.data,
-            username:app.appuserinfo.username
-          })
-        },
-        fail: function (res) { },
-        complete: function (res) { },
-      })
+    onShow: function() {
+        var that = this;
+        wx.request({
+            url: GetOneUserNote_url,
+            data: {
+                u_id: app.appuserinfo.u_id
+            },
+            header: {
+                "Content-Type": "json"
+            },
+            method: 'GET',
+            dataType: 'json',
+            success: function(res) {
+                console.log(res.data)
+                that.setData({
+                    program: res.data,
+                    username: app.appuserinfo.username
+                })
+            },
+            fail: function(res) {},
+            complete: function(res) {},
+        })
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
-      return {
-        title:'微享便签',
-        desc: '将自己的公开便签分享给他人！',
-        path: '/pages/Other/Other?u_id='+app.appuserinfo.u_id+"&&nickname="+app.appuserinfo.username
-      }
+    onShareAppMessage: function() {
+        return {
+            title: '微享便签',
+            desc: '将自己的公开便签分享给他人！',
+            path: '/pages/Other/Other?u_id=' + app.appuserinfo.u_id + "&&nickname=" + app.appuserinfo.username
+        }
     }
 })

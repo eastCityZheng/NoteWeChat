@@ -18,6 +18,7 @@ Page({
         delBtnWidth: 77,
         deui: 0,
         deu: null,
+        ht:null,
         hh: 0,
         animationData: {},
         flag: true,
@@ -257,7 +258,8 @@ Page({
       that.setData({
         tp_id:options.tp_id,
         username:options.tp_name,
-        page:options.page
+        page:options.page,
+        ht: wx.getSystemInfoSync().windowHeight - 50
       })
       if(options.page=='gzmb'){
         console.log("开始测试"+app.appuserinfo.username)

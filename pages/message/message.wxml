@@ -1,0 +1,28 @@
+<!--pages/BuildNote/BuildNote.wxml-->
+<view class='body'>
+  <view class='bar'>
+      <view class='bar_left'>留言</view>
+      <view class='bar_right' bindtap='changetoXX'>
+        <image src='../../images/right.png'></image>
+      </view>
+  </view>
+
+  <view class='first_white'>
+     <textarea maxlength='1000' hidden='{{textareashow}}' style='margin-top:10rpx; color:#282828;' bindinput='textachange'></textarea>
+      <view class='pictures' style='margin-top: {{imgtop}}rpx;'>
+    </view>
+  </view>
+
+  <view class='select_color'>
+    <view class='select_left'>选择颜色</view>
+    <view class='select_right'>
+      <view class="{{colortype==0?'circle.s1':'circle'}}" bindtap='s1'style=' border: 1rpx solid #ff6666;'></view>
+      <view class="{{colortype==1?'circle.s2':'circle'}}" bindtap='s2' style=' border: 1rpx solid #498eff;'></view>
+      <view class="{{colortype==2?'circle.s3':'circle'}}" bindtap='s3' style=' border: 1rpx solid #c68efe;'></view>
+      <view class="{{colortype==3?'circle.s4':'circle'}}" bindtap='s4' style=' border: 1rpx solid #ffc949;'></view>
+      <view class="{{colortype==4?'circle.s5':'circle'}}" bindtap='s5' style=' border: 1rpx solid #feb0fe;'></view>
+      <view class="{{colortype==5?'circle.s6':'circle'}}" bindtap='s6' style=' border: 1rpx solid #ffa94d;'></view>
+    </view>
+  </view>
+
+</view>

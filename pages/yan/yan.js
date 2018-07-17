@@ -1,5 +1,5 @@
 // pages/yan/yan.js
-var app=getApp();
+var app = getApp();
 var Periphery_url = app.appServlet.servlet + "PeripheryServlet";
 var GetOneUserMessage_url = app.appServlet.servlet + "GetOneUserMessageServlet";
 
@@ -14,6 +14,7 @@ Page({
         time: "周五 04/20 17:49",
         xxsrc: ["../../images/xx1.png", "../../images/xx2.png"],
         colorx: ["#ff5858", "#498eff", "#ffc949", "#c68efe"],
+        ht: null,
         indexx: 0,
         delBtnWidth: 77,
         deui: 0,
@@ -31,17 +32,20 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-
+    onLoad: function(options) {
+        this.setData({
+            ht : wx.getSystemInfoSync().windowHeight
+        })
+        console.log(this.data.ht)
     },
-    changeimg: function () {
+    changeimg: function() {
         this.setData({
             flag: false,
             flag2: true,
             imgtype: 1
         })
     },
-    changeimg2: function () {
+    changeimg2: function() {
         this.setData({
             flag: true,
             flag2: false,
@@ -51,111 +55,113 @@ Page({
     /**
      * to bq 查看便签详情
      */
-    tobq:function(res){
-      console.log(res);
-      wx.navigateTo({
-        url: '/pages/bq/bq?n_id=' + res.currentTarget.dataset.n_id + '&&n_page=index',
-      })
+    tobq: function(res) {
+        console.log(res);
+        wx.navigateTo({
+            url: '/pages/bq/bq?n_id=' + res.currentTarget.dataset.n_id + '&&n_page=index',
+        })
     },
-    meNote:function(res){
-      wx.navigateTo({
-        url: '../menote/menote?m_id=' + res.currentTarget.dataset.m_id,
-      })
+    meNote: function(res) {
+        wx.navigateTo({
+            url: '../menote/menote?m_id=' + res.currentTarget.dataset.m_id,
+        })
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function () {
+    onReady: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {
-      var that=this;
-      wx.showLoading({
-        title: '加载中',
-      })
-      wx.getLocation({
-        success: function (res) {
-          var latitude = res.latitude
-          var longitude = res.longitude
-          wx.request({
-            url: Periphery_url,
-            data:{
-              lat:latitude,
-              lon:longitude,
-              u_id: app.appuserinfo.u_id
-            },
-            header:{'Content-Type':'json'},
-            method:'GET',
-            success:function(res){
-              wx.hideLoading()
-              console.log(res);
-              that.setData({
-                program:res.data
-              })
+    onShow: function() {
+        var that = this;
+        wx.showLoading({
+            title: '加载中',
+        })
+        wx.getLocation({
+            success: function(res) {
+                var latitude = res.latitude
+                var longitude = res.longitude
+                wx.request({
+                    url: Periphery_url,
+                    data: {
+                        lat: latitude,
+                        lon: longitude,
+                        u_id: app.appuserinfo.u_id
+                    },
+                    header: {
+                        'Content-Type': 'json'
+                    },
+                    method: 'GET',
+                    success: function(res) {
+                        wx.hideLoading()
+                        console.log(res);
+                        that.setData({
+                            program: res.data
+                        })
+                    }
+                })
             }
-          })
-        }
-      })
+        })
 
-      wx.request({
-        url: GetOneUserMessage_url,
-        data: {
-          u_id:app.appuserinfo.u_id
-        },
-        header: {
-          'Content-Type':'json'
-        },
-        method: 'GET',
-        dataType: 'json',
-        responseType: 'text',
-        success: function(res) {
-          console.log(res)
-          that.setData({
-            program2:res.data
-          })
-        },
-        fail: function(res) {},
-        complete: function(res) {},
-      })
+        wx.request({
+            url: GetOneUserMessage_url,
+            data: {
+                u_id: app.appuserinfo.u_id
+            },
+            header: {
+                'Content-Type': 'json'
+            },
+            method: 'GET',
+            dataType: 'json',
+            responseType: 'text',
+            success: function(res) {
+                console.log(res)
+                that.setData({
+                    program2: res.data
+                })
+            },
+            fail: function(res) {},
+            complete: function(res) {},
+        })
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function () {
+    onHide: function() {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function () {
+    onUnload: function() {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function () {
+    onPullDownRefresh: function() {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function () {
+    onReachBottom: function() {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function() {
 
     }
 })

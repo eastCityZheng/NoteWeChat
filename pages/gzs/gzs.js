@@ -11,6 +11,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        ht: null,
         username:"",
         time: "周五 04/20 17:49",
         tp_top: 0,
@@ -156,7 +157,7 @@ Page({
                         icon: 'none',
                         duration: 1000
                       })
-                    }else if(res.data=="true"){
+                    }else if(res.data==true){
                       wx.showToast({
                         title: '添加成功！',
                         icon: 'success',
@@ -285,7 +286,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            ht: wx.getSystemInfoSync().windowHeight-50
+        })
+        console.log(this.data.ht)
     },
 
     /**

@@ -9,9 +9,10 @@
         </view>
     </view>
     <view style='margin-top:145rpx;'>
-        <view class='view2' wx:if="{{program.length==0}}">
-            <view class='view2_1_2_1'>
-                <text class='n_contents' style='font-size:35rpx;margin-top: 28rpx;'>\t亲，你还没有添加便签~\n点击加号创建你的便签</text>
+        <view class='view2' wx:if="{{program.length==0}}"style='margin-top:-45rpx;'>
+             <view class='view2_1_2_1' style='height:{{ht}}px;position: fixed;'>
+                <!-- <text class='n_contents' style='font-size:35rpx;margin-top: 28rpx;'>\t亲，你还没有添加便签~\n点击加号创建你的专属便签</text> -->
+                <image src='../../images/02.png' style='height:400rpx;width:400rpx'></image>
             </view>
         </view> 
 
