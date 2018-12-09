@@ -86,6 +86,7 @@ Page({
             success: function(res) {
                 var latitude = res.latitude
                 var longitude = res.longitude
+                console.log(latitude+"   "+longitude)
                 wx.request({
                     url: Periphery_url,
                     data: {

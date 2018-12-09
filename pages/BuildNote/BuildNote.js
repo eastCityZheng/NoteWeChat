@@ -182,7 +182,6 @@ Page({
     //获取经纬度
     wx.getLocation({
       success: function (res) {
-        console.log(res)
         that.setData({
           /*hasLocation: true,*/
           Mylongitude: res.longitude,
@@ -226,7 +225,9 @@ Page({
                 n_color: that.data.colortype,
                 n_power: that.data.seetype,
                 n_img: that.data.filename,
-                n_page: that.data.n_page
+                n_page: that.data.n_page,
+                lon: that.data.Mylongitude,
+                lat: that.data.Mylatitude
               },
               header: {
                 "Content-Type": "json"
@@ -277,7 +278,8 @@ Page({
                 n_page: that.data.n_page,
                 tn_nickname: app.appuserinfo.username,
                 tp_id: that.data.tp_id,
-                tn_headimg: app.appuserinfo.headimg
+                tn_headimg: app.appuserinfo.headimg,
+                
               },
               header: {
                 "Content-Type": "json"
