@@ -51,10 +51,13 @@
     position: absolute;
     /* border: 1rpx solid blue; */
 }
+.view2_border{
+  padding-top: 120rpx;
+}
 .view2 {
+    /* margin-top: 80px; */
     position: relative;
 }
-
 .view2_1 {
     width: 695rpx;
     height: 120rpx;
