@@ -23,6 +23,11 @@
   
       
     ],
+    "permission": {
+      "scope.userLocation": {
+        "desc": "导航"
+      }
+    },
     "window": {
         "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTitleText": "小程序",

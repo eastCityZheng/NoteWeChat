@@ -98,6 +98,19 @@ Page({
 
   },
   bindGetUserInfo: function (e) {
+    //获取一下地理位置授权
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userLocation']) {
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success() {
+             
+            }
+          })
+        }
+      }
+    })
     console.log(e.detail.userInfo)
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
