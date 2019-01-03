@@ -249,7 +249,7 @@ Page({
     var testname = options.extra;
     console.log(options)
     that.setData({
-      src: testname.replace("_","="),
+      src: testname,
       n_page:options.page,
       tp_id:options.tp_id
     })
