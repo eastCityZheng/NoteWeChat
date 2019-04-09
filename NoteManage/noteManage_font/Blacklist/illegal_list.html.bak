@@ -1,0 +1,140 @@
+<html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../static/plugins/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="../../static/css/global.css" media="all">
+<link rel="stylesheet" href="../../static/plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../static/css/table.css" />
+<head>
+    <title>Title</title>
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>可疑便签</legend>
+</fieldset>
+
+  <div class="layui-collapse" lay-filter="test">
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title">用户ID：21 |昵称：|可疑便签数量：|加入黑名单</h2>
+        <div class="layui-colla-content">
+         <table class="layui-table" >
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>用户ID</th>
+            <th>便签内容</th>
+            <th>时间</th>
+            <th>地点</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody id="ajax_message">
+        </tbody>
+ </table>
+            <div id="demo1"></div>
+    </div>
+    </div>
+  </div>
+
+<input hidden id="pagenu" value="{{ pagenu }}">
+<script type="text/javascript" src="../../static/plugins/layui/layui.js"></script>
+</body>
+<script>
+
+    layui.use(['laypage', 'layer', 'element'], function() { //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer, laypage = layui.laypage, element= layui.element(); //独立版的layer无需执行这一句
+
+
+        var  pagenu = $('#pagenu').attr("value");
+        //分页
+        //总页数大于页码总数
+          laypage({
+            cont: 'demo1'
+            ,pages: pagenu
+            ,first: false
+            ,last: false
+            ,jump: function(obj,first){
+
+               $.ajax({
+                type:'POST',
+                url:'/illegal_list',
+                data:JSON.stringify(obj),
+                dataType:'json',
+                success:function (data) {
+                     var html ='';
+
+                    $('#ajax_message').html("");
+                    $.each(data.illegal_list,function (commentIndex,comment) {
+                        html += '<tr>'+
+                                '<td>'+comment['u_id']+'</td>'+
+                                '<td>'+comment['n_content']+'</td>'+
+                                '<td>'+comment['n_time']+'</td>'+
+                                '<td>'+comment['n_place']+'</td>'+
+                                '<td >'+
+                                    '<button  class="layui-btn layui-btn-mini" data-method="ed" data-id="'+comment['n_id']+'" >查看</button>'+
+                                '</td>'+
+                                '</tr>'
+
+
+                    });
+                    $('#ajax_message').html(html);
+                }
+            });
+              }
+          });
+
+//触发事件
+        var active = {
+
+            ed: function(othis){
+
+                var id = othis.data('id');
+                layer.open({
+                    type: 2
+                    ,offset:'20px'
+                    ,content:'/illegal_note/'+id
+                    ,shade: [0.8, '#393D49'] //显示遮罩
+                    ,area: ['800px', '500px']
+                });
+            },
+
+        };
+
+        $("body").on('click','.layui-btn', function () {
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+
+        });
+
+    });
+
+</script>
+</html>
+
+
+
+$.ajax({
+                type:'POST',
+                url:'/illegal_list',
+                dataType:'json',
+                success:function (data) {
+                     var html ='';
+
+                    $('#ajax_message').html("");
+                    $.each(data.illegal_list,function (commentIndex,comment) {
+                        html +=   '<div class="layui-collapse" lay-filter="test">'+
+                                   ' <div class="layui-colla-item">'+
+                                   '     <h2 class="layui-colla-title">用户ID：'+comment['u_id']+' |昵称：'+comment['nickname']+'|可疑便签数量：' +
+                            +comment['num']+'|加入黑名单</h2>'+
+                                     '   <div class="layui-colla-content">' +
+                            '11111111111111111111111111111'+
+                                   '    </div></div></div>'
+                    });
+                    $('#ajax_message').html(html);
+                }
+            });

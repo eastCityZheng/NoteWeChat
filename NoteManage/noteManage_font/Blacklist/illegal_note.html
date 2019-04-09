@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if img1%}
+        <img src="{{ img_url }}{{ img1 }}" style="height: 400px;width: 300px"/>
+    {% endif %}
+    {% if im2%}
+        <img src="{{ img_url }}{{ img2 }}" style="height: 400px;width: 300px"/>
+    {% endif %}
+    {% if img3%}
+        <img src="{{ img_url }}{{ img3 }}" style="height: 400px;width: 300px"/>
+    {% endif %}
+    {% if img4%}
+        <img src="{{ img_url }}{{ img4 }}" style="height: 400px;width: 300px"/>
+    {% endif %}
+    {% if audio%}
+        <audio controls src="{{ img_url }}{{ audio }}" style="height: 400px;width: 300px"/>
+    {% endif %}
+    {% if video%}
+        <video controls src="{{ img_url }}{{ video }}" style="height: 400px;width: 300px"/>
+    {% endif %}
+    <div>{{ content }}</div>
+</body>
+</html>

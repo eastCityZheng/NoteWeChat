@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../static/plugins/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="../../static/css/global.css" media="all">
+<link rel="stylesheet" href="../../static/plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../static/css/table.css" />
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>数据库配置</legend>
+    </fieldset>
+    <form class="layui-form" method="post" action="/sql_backup">
+      <div class="layui-form-item">
+        <label class="layui-form-label">数据库服务器域名或ip</label>
+        <div class="layui-input-block">
+          <input type="text" name="db_ip" value="139.199.26.91" required  lay-verify="required" placeholder="host_or_ip" autocomplete="off" class="layui-input" >
+        </div>
+      </div>
+       <div class="layui-form-item">
+        <label class="layui-form-label">数据库端口</label>
+        <div class="layui-input-block">
+          <input type="text" name="db_port" value="3306" required  lay-verify="required" placeholder="db_port" autocomplete="off" class="layui-input" >
+        </div>
+      </div>
+        <div class="layui-form-item">
+        <label class="layui-form-label">数据库用户名</label>
+        <div class="layui-input-block">
+          <input type="text" name="db_user" value="root" required  lay-verify="required" placeholder="db_user" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+       <div class="layui-form-item">
+        <label class="layui-form-label">数据库密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="db_passwd" value="root" required  lay-verify="required" placeholder="db_passwd" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+       <div class="layui-form-item">
+        <label class="layui-form-label">数据库名称</label>
+        <div class="layui-input-block">
+          <input type="text" name="db_name" value="notewechat" required  lay-verify="required" placeholder="db_name" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+       <div class="layui-form-item">
+        <label class="layui-form-label">备份地址</label>
+        <div class="layui-input-block">
+          <input type="text" name="backup_path" value="/opt/sql_backup" required  lay-verify="required" placeholder="backup_path" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+<input type="hidden" id="result" value="{{result}}">
+<script type="text/javascript" src="../../static/plugins/layui/layui.js"></script>
+<script>
+    layui.use(['layer', 'form'], function() {
+        var layer = layui.layer,
+            $ = layui.jquery
+
+        var error=$("#result").attr("value");
+        if(error=="true"){
+            layer.msg("备份成功！！");
+        }else if(error=="false"){
+            layer.msg("备份失败！！")
+        }
+
+    });
+</script>
+</body>
+</html>

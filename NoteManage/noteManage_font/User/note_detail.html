@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    {% if img1%}
+        <img src="{{ img_url }}{{ img1 }}" style="width: 700px;margin-top: 20px;margin-left: 50px;border-radius: 20px"/>
+    {% endif %}
+    {% if im2%}
+        <img src="{{ img_url }}{{ img2 }}" style="width: 700px;margin-top: 20px;margin-left: 50px;border-radius: 20px"/>
+    {% endif %}
+    {% if img3%}
+        <img src="{{ img_url }}{{ img3 }}" style="width: 700px;margin-top: 20px;margin-left: 50px;border-radius: 20px"/>
+    {% endif %}
+    {% if img4%}
+        <img src="{{ img_url }}{{ img4 }}" style="width: 700px;margin-top: 20px;margin-left: 50px;border-radius: 20px"/>
+    {% endif %}
+    {% if audio%}
+        <div style="width: 100%;height: auto;margin-top: 50px;text-align: center;">
+        <audio controls src="{{ img_url }}{{ audio }}" style="width: 400px;margin: 0 auto;"/>
+        </div>
+    {% endif %}
+    {% if video%}
+        <div style="width: 100%;height: auto;margin-top: 20px;text-align: center;">
+        <video controls src="{{ img_url }}{{ video }}" style="width: 700px;margin: 0 auto;"/>
+        </div>
+    {% endif %}
+</div>
+    <div style="width: 700px;height: auto;margin: 20px 0 20px 50px;">
+        <p style="margin: 0 15px;font-size: 18px;line-height: 34px;">
+            {{ content }}
+        </p>
+    </div>
+</body>
+</html>

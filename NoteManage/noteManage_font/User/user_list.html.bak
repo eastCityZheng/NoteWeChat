@@ -1,0 +1,102 @@
+<html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../static/plugins/layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="../../static/css/global.css" media="all">
+<link rel="stylesheet" href="../../static/plugins/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../static/css/table.css" />
+<head>
+    <title>Title</title>
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>用户列表</legend>
+</fieldset>
+<div class="layui-form">
+    <table class="layui-table" >
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>用户ID</th>
+            <th>openid</th>
+            <th>昵称</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="ajax_message">
+        <button id="btn" class="layui-btn">ceshi</button>
+        </tbody>
+    </table>
+</div>
+
+
+<script type="text/javascript" src="../../static/plugins/layui/layui.js"></script>
+</body>
+<script>
+    layui.use('layer', function() { //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+         let params={};
+        {#params.page_limit = 10;#}
+        {#params.page_count = 2;#}
+
+            $.ajax({
+                type:'POST',
+                url:'/user_list',
+                data:JSON.stringify(params),
+                dataType:'json',
+                success:function (data) {
+                    var html ='';
+                    $.each(data,function (commentIndex,comment) {
+                        html += '<tr>'+
+                                '<td>'+comment['id']+'</td>'+
+                                '<td>'+comment['openid']+'</td>'+
+                                '<td>'+comment['name']+'</td>'+
+                                '<td >'+
+                                    '<button id="btn"  data-method="settype"  data-id="'+comment['id']+'" data-isuse="'+comment['isuse']+'" class="layui-btn layui-btn-mini">'+comment['isuse_text']+'</button>'+
+                                '</td>'+
+                                '</tr>'
+
+                    });
+                    $('#ajax_message').html(html);
+                }
+            });
+
+
+//触发事件
+        var active = {
+
+            settype: function(othis){
+
+                var id = othis.data('id');
+                var isuse = othis.data('isuse');
+                layer.open({
+                    type: 2
+                    ,offset:'20px'
+                    ,content:'/user_editType?u_id='+id+'&isuse='+isuse
+                    ,shade: [0.8, '#393D49'] //显示遮罩
+                    ,area: ['800px', '500px']
+                });
+            },
+        };
+        $('#btn').on('click',function () {
+            alert("youfanying")
+        });
+
+
+        $("#btn").on('click', function () {
+
+            {#var othis = $(this), method = othis.data('method');#}
+            {#active[method] ? active[method].call(this, othis) : '';#}
+
+
+        });
+
+    });
+
+</script>
+</html>

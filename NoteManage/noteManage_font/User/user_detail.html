@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/plugins/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../static/css/global.css" media="all">
+    <link rel="stylesheet" href="../../static/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/css/table.css" />
+    <title>Title</title>
+</head>
+<style>
+    .info {
+        display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content:space-between;
+        text-align: center;
+    }
+    ul,li{
+        list-style: none;
+        margin: 0;
+		padding: 0;
+		width: 100%;
+     }
+    .info-area {
+        width: calc(30% - 5px);
+		height: 100px;
+		margin: 5px 0;
+    }
+    .info-area p {
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #707070;
+    }
+    .info-area-num {
+    margin-top: 15px;
+    line-height: 45px;
+    font-size: 14px;
+    color: #808080;
+    }
+    .info-area-num b {
+    margin-right: 5px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffa928;
+    }
+
+</style>
+<body>
+<ul class = "info">
+    <li class="info-area">
+        <p>个人便签数量</p>
+        <div class="info-area-num">
+            <b>{{ notenum1 }}</b>个
+        </div>
+    </li>
+    <li class="info-area">
+        <p>工作室便签数量</p>
+        <div class="info-area-num">
+            <b>{{ notenum2 }}</b>个
+        </div>
+    </li>
+    <li class="info-area">
+        <p>工作室数量</p>
+        <div class="info-area-num">
+            <b>{{ studionum }}</b>个
+        </div>
+    </li>
+</ul>
+<div>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>个人便签</legend>
+</fieldset>
+<div class="layui-form">
+    <table class="layui-table" >
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>地点</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="ajax_message">
+        {% for data in notelist1_list %}
+            <tr>
+                <td>{{ data.n_id }}</td>
+                <td>{{ data.n_place }}</td>
+                <td>{{ data.n_time }}</td>
+                <td>
+                    <button id="notedetail" data-method="notedetail" data-type="1" data-id="{{ data.n_id }}"class="layui-btn layui-btn-mini">查看</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+<!-- 工作室 -->
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>工作室</legend>
+</fieldset>
+<div class="layui-form">
+    <table class="layui-table" >
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>标题</th>
+            <th>备注</th>
+            <th>地点</th>
+            <th>时间</th>
+        </tr>
+        </thead>
+        <tbody id="ajax_message">
+        {% for data in studio_list %}
+            <tr>
+                <td>{{ data.tp_id }}</td>
+                <td>{{ data.tp_name }}</td>
+                <td>{{ data.tp_comment }}</td>
+                <td>{{ data.tp_addr }}</td>
+                <td>{{ data.tp_time }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<!-- 工作室便签 -->
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>工作室便签</legend>
+</fieldset>
+<div class="layui-form">
+    <table class="layui-table" >
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>工作室名称</th>
+            <th>内容</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody id="ajax_message">
+        {% for data in notelist2_list %}
+            <tr>
+                <td>{{ data.tn_id }}</td>
+                <td>{{ data.tp_name }}</td>
+                <td>{{ data.tn_content }}</td>
+                <td>
+                    <button id="notedetail" data-method="notedetail" data-type="3" data-id="{{ data.tn_id }}"class="layui-btn layui-btn-mini">查看</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+<script type="text/javascript" src="../../static/plugins/layui/layui.js"></script>
+<script>
+    layui.use(['laypage', 'layer'], function() { //独立版的layer无需执行这一句
+        var $ = layui.jquery, layer = layui.layer, laypage = layui.laypage; //独立版的layer无需执行这一句
+
+//触发事件
+        var active = {
+            notedetail:function (othis) {
+                var id = othis.data('id');
+                var type = othis.data('type');
+                layer.open({
+                    type: 2
+                    ,offset:'20px'
+                    ,content:'/note_detail/'+id+'/'+type
+                    ,shade: [0.8, '#393D49'] //显示遮罩
+                    ,area: ['800px', '500px']
+                });
+            }
+        };
+
+        $("body").on('click','.layui-btn', function () {
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
+
+        });
+
+    });
+
+</script>
+</html>
