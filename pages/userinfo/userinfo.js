@@ -59,10 +59,10 @@ Page({
                           success: function (res) {
                             var data = res.data;
                             console.log(res.data);
-                            if (res.data == 0) {
+                            if (res.data.code == 0) {
                               wx.showModal({
                                 title: '提示',
-                                content: '登录失败！',
+                                content: res.data.error,
                               })
                             } else {
                               app.appuserinfo.u_id = res.data['0'].u_id
@@ -129,10 +129,10 @@ Page({
         success: function (res) {
           var data = res.data;
           console.log(res.data);
-          if (res.data == 0) {
+          if (res.data.code == 0) {
             wx.showModal({
               title: '提示',
-              content: '登录失败！',
+              content: res.data.error,
             })
           } else {
             app.appuserinfo.u_id = res.data['0'].u_id
